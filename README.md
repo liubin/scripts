@@ -15,6 +15,8 @@ $ export PATH=~/scripts:$PATH
 
 [gc(git checkout) doc](docs/gc.md)
 
+[![asciicast](https://asciinema.org/a/drprjbjaz46py8db8brea1muu.png)](https://asciinema.org/a/drprjbjaz46py8db8brea1muu)
+
 ### dexec
 
 [dexec(docker exec) doc](docs/dexec.md)

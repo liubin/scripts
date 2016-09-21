@@ -16,3 +16,5 @@ $ gc -
 ```
 
 Attention: if you have many git repos, this will affect all.
+
+[![asciicast](https://asciinema.org/a/drprjbjaz46py8db8brea1muu.png)](https://asciinema.org/a/drprjbjaz46py8db8brea1muu)
