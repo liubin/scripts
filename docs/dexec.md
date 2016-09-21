@@ -18,4 +18,4 @@ If more the one contianer be found, it will show the list and let you to choice 
 
 If you choice `0`, the commands will be run in all containers.
 
-[![asciicast](https://asciinema.org/a/3cvr9hvzy9w7niscwyv23kcu9.png)](https://asciinema.org/a/3cvr9hvzy9w7niscwyv23kcu9)
+[![asciicast](https://asciinema.org/a/b9bxcyf4iamfnoc8wzu3udm3i.png)](https://asciinema.org/a/b9bxcyf4iamfnoc8wzu3udm3i)

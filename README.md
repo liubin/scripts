@@ -21,4 +21,4 @@ $ export PATH=~/scripts:$PATH
 
 [dexec(docker exec) doc](docs/dexec.md)
 
-[![asciicast](https://asciinema.org/a/3cvr9hvzy9w7niscwyv23kcu9.png)](https://asciinema.org/a/3cvr9hvzy9w7niscwyv23kcu9)
+[![asciicast](https://asciinema.org/a/b9bxcyf4iamfnoc8wzu3udm3i.png)](https://asciinema.org/a/b9bxcyf4iamfnoc8wzu3udm3i)
