@@ -36,8 +36,8 @@ if [ $c -eq 0 ]; then
   exit 1
 elif [ $c -gt 1 ]; then
   echo -e "${RED}the is more than one containers found:${NC}\n"
-  docker ps | grep $img
-  echo -e -n "\n\n${RED}please select one [0-$c]:${NC}"
+  docker ps | grep $img | nl
+  echo -e -n "\n\n${RED}please select one [1-$c](ENTER for run in all containers):${NC}"
   read selected
   selected=$(($selected + 0))
   # TODO should verify user input.
