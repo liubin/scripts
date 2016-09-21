@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "please use: gc <branch>" 1>&2
+  exit 1
+fi
+
+if [ -f /tmp/gc.revision ]; then
+  PREV_BRANCH=`cat /tmp/gc.revision`
+fi
+
+if [ "$1" = "-" ]; then
+  if [ "$PREV_BRANCH" = "" ]; then
+    echo "no previous branch found" 1>&2
+    exit 1
+  else
+    echo "`git rev-parse --abbrev-ref HEAD`" > /tmp/gc.revision
+    git checkout $PREV_BRANCH
+  fi
+else
+  echo "`git rev-parse --abbrev-ref HEAD`" > /tmp/gc.revision
+  git checkout $1
+fi
+

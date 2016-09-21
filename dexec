@@ -1,0 +1,69 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+  echo "please use: `basename $0`(enter docker container) <image_name> [arg1, arg2, ...]" 1>&2
+  exit 1
+fi
+
+img=$1
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+c=`docker ps | grep $img | wc -l`
+
+# string to int
+c=$(($c + 0))
+
+# container id
+cid=()
+# container count
+cc=0
+
+get_container_id(){
+  if [ $1 -eq 0 ]; then
+    cid=(`docker ps | grep $img | awk '{ print $1 }'`)
+    cc=${#cid[@]}
+  else
+    cid=(`docker ps | grep $img | awk -v nr=$1 '{ if(NR==nr) print $1 }'`)
+    cc=1
+  fi
+}
+
+# step 1: get container id.
+if [ $c -eq 0 ]; then
+  echo "no containers with $img found." 1>&2
+  exit 1
+elif [ $c -gt 1 ]; then
+  echo -e "${RED}the is more than one containers found:${NC}\n"
+  docker ps | grep $img
+  echo -e -n "\n\n${RED}please select one [0-$c]:${NC}"
+  read selected
+  selected=$(($selected + 0))
+  # TODO should verify user input.
+  get_container_id $selected
+else
+  get_container_id 1
+fi
+
+# step 2: run commands in container.
+if [ $cc = 0 ]; then
+    echo -e "${GREEN}Can't found container id!! ${NC}" 1>&2
+    exit 1
+else
+  
+  if [ $# -eq 1 ]; then
+    # default run bash.
+    args=(bash)
+  else
+    # otherwise run commands use specified.
+    args=("$@")
+    args=("${args[@]:1}")
+  fi
+
+  for e in ${cid[@]}; do
+    echo -e "${GREEN}Running commands in conatiner $e ${NC}" 1>&2
+    docker exec -it $e ${args[@]}
+  done
+
+fi
