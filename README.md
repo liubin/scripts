@@ -12,6 +12,16 @@ $ chmod +x ~/script/*
 
 ## Command list
 
+### dip
+
+Show Docker container IP:
+
+```
+$ dip post
+IP for conatiner /peaceful_curran (bb8a0fc140ef) is 172.17.0.3
+IP for conatiner /postgres (5073328a4fb2) is 172.17.0.2
+```
+
 ### gc
 
 If you frequently switch with two branches, you may be like a command as `cd -` to return the previous directory. `gc` will do the same.

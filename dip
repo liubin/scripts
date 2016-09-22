@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+  echo "please use: `basename $0`(docker ip) <query_string>" 1>&2
+  exit 1
+fi
+
+img=$1
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+cid=(`docker ps | grep $img | awk '{ print $1 }'`)
+cc=${#cid[@]}
+
+if [ $cc = 0 ]; then
+    echo -e "${GREEN}Can't found container id!! ${NC}" 1>&2
+    exit 1
+fi
+
+for e in ${cid[@]}; do
+  ip=`docker inspect --format="{{ .NetworkSettings.IPAddress }}" $e`
+  name=`docker inspect --format="{{ .Name }}" $e`
+  echo -e "IP for conatiner ${GREEN}$name ($e)${NC} is ${RED}$ip${NC}"
+done
