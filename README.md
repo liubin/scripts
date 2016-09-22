@@ -12,6 +12,20 @@ $ chmod +x ~/script/*
 
 ## Command list
 
+
+### dke
+
+Docker kill Exited container:
+
+```
+$ dke
+Removing 630f17f03600
+630f17f03600
+
+Removing 699872b3712c
+699872b3712c
+```
+
 ### dip
 
 Show Docker container IP:

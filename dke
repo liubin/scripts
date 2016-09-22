@@ -1,0 +1,19 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+cid=(`docker ps -a --format "{{.ID}} {{.Status}}" | grep Exited | awk '{print $1}'`)
+cc=${#cid[@]}
+
+if [ $cc = 0 ]; then
+    echo -e "${GREEN}No Exited containers found ${NC}" 1>&2
+    exit 0
+fi
+
+for e in ${cid[@]}; do
+  echo "Removing $e"
+  docker rm -fv $e
+  echo ""
+done
