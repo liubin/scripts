@@ -12,6 +12,9 @@ $ chmod +x ~/script/*
 
 ## Command list
 
+### gotest
+
+Test all packages(written by me) excludes `vendor` diretory.
 
 ### dke
 
