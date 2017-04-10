@@ -12,6 +12,10 @@ $ chmod +x ~/script/*
 
 ## Command list
 
+### lastcommitid
+
+Get last Git commit id and copy it to clipboard if under Mac OS.
+
 ### gotest
 
 Test all packages(written by me) excludes `vendor` diretory.
